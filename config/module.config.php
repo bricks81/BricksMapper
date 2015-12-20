@@ -4,6 +4,8 @@ return array(
 	'service_manager' => array(
 		'factories' => array(			
 			'BricksMapper' => 'Bricks\Mapper\Mapper',
+			'BricksMapperAdapter' => 'Bricks\Mapper\Adapter',
+			'BricksMapperDatabase' => 'Bricks\Mapper\Database',
 		),		
 		'aliases' => array(
 			'bricksReadAdapter' => 'Zend\Db\Adapter\Adapter',
@@ -13,22 +15,6 @@ return array(
 	),	
 	'BricksConfig' => array(
 		'__DEFAULT_NAMESPACE__' => array(			
-			'BricksClassLoader' => array(
-				'aliasMap' => array(
-					'BricksMapper' => array(						
-						'mapperClass' => 'Bricks\Mapper\Mapper',						
-						'defaultMapper' => 'Bricks\Mapper\DefaultMapper',
-						
-					),
-				),
-				'classMap' => array(
-					'Bricks\Mapper\Database' => array(
-						'factories' => array(
-							'Bricks\Mapper\Factory\DatabaseFactory'
-						),
-					),
-				),
-			),
 			'BricksMapper' => array(
 				'defaultMapper' => 'Bricks\Mapper\defaultMapper',
 				'defaultAdapters' => array(
@@ -36,6 +22,7 @@ return array(
 					'write' => 'bricksWriteAdapter',
 					'install' => 'bricksInstallAdapter',
 				),
+				/*
 				'adapters' => array(
 					'Bricks\Mapper\defaultMapper' => array(
 						'read' => 'bricksReadAdapter',
@@ -43,14 +30,18 @@ return array(
 						'install' => 'bricksInstallAdapter',
 					),
 				),
+				*/
+				/*
 				'map' => array(
 					'Bricks\Model\DefaultModel' => array(
-						'BricksMapper.defaultMapper', // or a class
+						'Bricks\Mapper\Mappers\DefaultMapper',
 					),
 				),
+				*/
+				/*
 				'databases' => array(
 					'__DEFAULT_SCHEMA__' => array(
-						'table_prefix' => '',
+						'tablePrefix' => '',
 						'tables' => array(
 							'config' => array(
 								'columns' => array(),
@@ -59,6 +50,7 @@ return array(
 						),
 					),
 				),
+				*/
 			),
 		),		
 	),
